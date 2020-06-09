@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  margin: 0 auto;
+  width: 75%;
+  height: 100vh;
+}
+
+.mobile-nav {
+  background: #555;
+  color: #fff;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  height: 35px;
+  padding: 20px;
+  font-size: 20px;
+}
+
+.mobile-nav .nav-btn {
+  cursor: pointer;
+}
+
+.nav {
+  background: cornflowerblue;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  background: cornflowerblue;
+}
+
+ul li a,
+ul li {
+  cursor: pointer;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+ul li {
+  display: block;
+}
+
+ul li a {
+  padding: 15px 25px;
+  background: cornflowerblue;
+  color: #fff;
+  display: block;
+}
+
+li a:hover {
+  background-color: #ccc3;
+  color: #111;
+}
+
+ul li ul {
+  background: #555;
+  padding-left: 5px;
+  position: absolute;
+  width: 10em;
+  display: none;
+}
+
+li ul li a {
+  padding: 10px;
+  background: #555;
+  color: #fff;
+}
+
+li ul li a:hover {
+  background: #555;
+}
+
+ul li ul li {
+  position: relative;
+}
+
+ul li ul li ul {
+  position: absolute;
+  top: 5px;
+  left: 100%;
+}
+
+li:hover > ul,
+li:active > ul {
+  display: block;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a,
+.dropdown > a:hover,
+.dropdown.active > a,
+.dropdown.active > a:hover {
+  background: url(./img/arrow.svg);
+  background-position: right;
+  background-size: 15px;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-nav {
+    display: flex;
+  }
+
+  ul.nav {
+    visibility: hidden;
+    transform: translateY(-120%);
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+  }
+
+  ul.nav.toggle {
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  ul {
+    flex-direction: column;
+  }
+  ul li {
+    overflow: hidden;
+    border: none;
+  }
+
+  ul li ul {
+    position: relative;
+    width: 90%;
+    padding: 0 5%;
+    transform: translateX(-100%);
+    display: block;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    transition: transform 400ms ease;
+  }
+
+  ul li ul li ul {
+    position: initial;
+    background: #555;
+    top: 0;
+    width: 96%;
+    padding: 0 2%;
+  }
+  li:hover > ul,
+  li:active > ul {
+    display: block;
+  }
+
+  li.active > ul{
+    transform: translateX(0);
+    visibility: visible;
+    height: 100%;
+  }
+
+  .dropdown > a,
+  .dropdown > a:hover,
+  .dropdown.active > a,
+  .dropdown.active > a:hover {
+    background-position: 95% 50%;
+  }
+}
